@@ -35,10 +35,12 @@ class UMLGenerateDirective(Directive):
 
         if os.path.basename(uml_dir) not in os.listdir(src_dir):
             os.mkdir(uml_dir)
+
         env.uml_dir = uml_dir
-        module_path = self.arguments[0]
+        module_path = os.path.abspath(self.arguments[0])
         os.chdir(uml_dir)
         basename = os.path.basename(module_path).split(".")[0]
+
         print call(['pyreverse', '-o', 'png', '-p', basename,
                     os.path.abspath(os.path.join(src_dir, module_path))])
         uri = directives.uri(os.path.join(self.DIR_NAME,
