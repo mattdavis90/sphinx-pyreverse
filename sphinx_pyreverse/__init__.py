@@ -31,9 +31,10 @@ class UMLGenerateDirective(Directive):
     def run(self):
         env = self.state.document.settings.env
         src_dir = env.srcdir
-        uml_dir = os.path.join(src_dir, self.DIR_NAME)
+        doc_dir = os.path.dirname(env.docname)
+        uml_dir = os.path.join(src_dir, doc_dir, self.DIR_NAME)
 
-        if os.path.basename(uml_dir) not in os.listdir(src_dir):
+        if os.path.basename(uml_dir) not in os.listdir(os.path.join(src_dir, doc_dir)):
             os.mkdir(uml_dir)
 
         env.uml_dir = uml_dir
