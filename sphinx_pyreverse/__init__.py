@@ -43,14 +43,7 @@ class UMLGenerateDirective(Directive):
                     os.path.abspath(os.path.join(src_dir, module_path))])
         uri = directives.uri(os.path.join(self.DIR_NAME,
                                           "classes_{0}.png".format(basename)))
-        scale = 100
-        max_width = 1000
-        if IMAGE:
-            i = IMAGE.open(os.path.join(src_dir, uri))
-            image_width = i.size[0]
-            if image_width > max_width:
-                scale = max_width * scale / image_width
-        img = nodes.image(uri=uri, scale=scale)
+        img = nodes.image(uri=uri, width='1000')
         os.chdir(src_dir)
         return [img]
 
