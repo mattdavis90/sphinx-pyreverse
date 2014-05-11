@@ -8,7 +8,13 @@ Install
 
 Install with::
 
-	pip install -e git+https://github.com/alendit/sphinx-pyreverse.git#egg=sphinx-pyreverse
+	pip install -e git+https://github.com/mattdavis90/sphinx-pyreverse.git#egg=sphinx-pyreverse
+	
+or::
+
+	git clone https://github.com/mattdavis90/sphinx-pyreverse.git
+	cd sphinx-pyreverse
+	sudo ./setup.py install
 
 Usage
 ------
