@@ -51,7 +51,10 @@ class UMLGenerateDirective(Directive):
         print call(['pyreverse', '-o', 'png', '-p', basename, module_dir])
 
         os.rename(classes_img, os.path.join(uml_dir, classes_img))
-        os.remove(packages_img)
+        try:
+            os.remove(packages_img)
+        except:
+            print "Could not find", packages_img
 
         uri = directives.uri(os.path.join(self.DIR_NAME, classes_img))
         img = nodes.image(uri=uri, width='1000')
