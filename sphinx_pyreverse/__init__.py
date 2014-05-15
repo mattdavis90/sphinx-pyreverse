@@ -56,8 +56,17 @@ class UMLGenerateDirective(Directive):
         except:
             print "Could not find", packages_img
 
+        max_width = 1000
+        img_width = 1000
+
+        if IMAGE:
+            i = IMAGE.open(os.path.join(uml_dir, classes_img))
+            
+            if i.size[0] < max_width:
+                img_width = i.size[0]
+
         uri = directives.uri(os.path.join(self.DIR_NAME, classes_img))
-        img = nodes.image(uri=uri, width='1000')
+        img = nodes.image(uri=uri, width=str(img_width))
 
         os.chdir(src_dir)
 
